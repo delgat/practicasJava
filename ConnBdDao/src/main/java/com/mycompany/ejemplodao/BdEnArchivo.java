@@ -5,20 +5,18 @@
  */
 package com.mycompany.ejemplodao;
 
-import com.google.gson.Gson;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.InputStream;
+import java.sql.BatchUpdateException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -37,6 +35,7 @@ class BdEnArchivo implements PersonaDao {
 
     public BdEnArchivo() {
         createConnection();
+        rellenarBd();
         f();
     }
 
@@ -67,7 +66,7 @@ class BdEnArchivo implements PersonaDao {
             Objects.requireNonNull(p);
             assert Objects.isNull(p.getId());
             p.setId(System.nanoTime());
-            stmt = conn.prepareStatement("insert into personas values( ?, ?) ");
+            stmt = conn.prepareStatement(cargarPropiedades("insertPersona"));
             stmt.setLong(1, p.getId());
             stmt.setString(2, p.getNombre());
             stmt.executeUpdate();
@@ -110,6 +109,52 @@ class BdEnArchivo implements PersonaDao {
             System.out.println("s'ha conectat");
         } catch (ClassNotFoundException | SQLException except) {
             System.out.println("No s'ha conectat");
+
+        }
+    }
+
+    private String cargarPropiedades(String nombrePropiedad) {
+        try {
+            InputStream is = getClass()
+                    .getClassLoader()
+                    .getResourceAsStream(
+                            "newproperties.properties");
+            Properties p = new Properties();
+            p.load(is);
+            return p.getProperty(nombrePropiedad);
+        } catch (IOException ex) {
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    @Override
+    public void rellenarBd() {
+        try {
+            stmt = conn.prepareStatement(cargarPropiedades("insertPersona"));
+            conn.setAutoCommit(false);
+            for (int i = 0; i < 50; i++) {
+                stmt.setLong(1, 432 + i);
+                stmt.setString(2, "XYZ");
+                stmt.addBatch();
+            }
+            stmt.executeBatch();
+            conn.commit();
+            conn.setAutoCommit(true);
+        } catch (BatchUpdateException esd) {
+            try {
+                conn.rollback();
+                System.out.println("Rollback!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            } catch (SQLException ex1) {
+                Logger.getLogger(BdEnArchivo.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        } catch (SQLException ex) {
+            try {
+                conn.rollback();
+                System.out.println("Rollback!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            } catch (SQLException ex1) {
+                Logger.getLogger(BdEnArchivo.class.getName()).log(Level.SEVERE, null, ex1);
+            }
 
         }
     }

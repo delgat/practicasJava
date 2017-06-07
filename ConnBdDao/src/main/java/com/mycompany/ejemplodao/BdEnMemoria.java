@@ -35,4 +35,9 @@ class BdEnMemoria implements PersonaDao {
         return Collections.unmodifiableList(personas);
     }
 
+    @Override
+    public void rellenarBd() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

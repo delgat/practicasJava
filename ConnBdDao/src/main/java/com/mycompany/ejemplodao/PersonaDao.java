@@ -14,4 +14,5 @@ import java.util.List;
 public interface PersonaDao {
     Persona nueva(final Persona p);
     List<Persona> todos();
+    void rellenarBd();
 }
