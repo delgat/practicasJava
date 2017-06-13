@@ -34,3 +34,7 @@ hs_err_pid*
 /prWeb/target/
 /clientJava/target/
 /formServlet/target/
+/pruebaPersistencia/target/
+/EjemploRestUno/target/
+/EjemploRestCliente/target/
+/servlets/target/

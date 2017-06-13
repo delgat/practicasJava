@@ -2,4 +2,6 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://localhost:8080/prWeb/Servei?wsdl" uri="wsdl/localhost_8080/prWeb/Servei.wsdl"/>
     <system systemId="http://localhost:8080/prWeb/Servei?xsd=1" uri="wsdl/localhost_8080/prWeb/Servei.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/PersistenciaWs/PersistenciaWs?wsdl" uri="wsdl/localhost_8080/PersistenciaWs/PersistenciaWs.wsdl"/>
+    <system systemId="http://localhost:8080/PersistenciaWs/PersistenciaWs?xsd=1" uri="wsdl/localhost_8080/PersistenciaWs/PersistenciaWs.xsd_1.xsd"/>
 </catalog>

@@ -99,16 +99,16 @@
                         </goals>
                         <configuration>
                             <wsdlFiles>
-                                <wsdlFile>localhost_8080/prWeb/Servei.wsdl</wsdlFile>
+                                <wsdlFile>localhost_8080/PersistenciaWs/PersistenciaWs.wsdl</wsdlFile>
                             </wsdlFiles>
-                            <packageName>ws</packageName>
+                            <packageName></packageName>
                             <vmArgs>
                                 <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
                             </vmArgs>
-                            <wsdlLocation>http://localhost:8080/prWeb/Servei?wsdl</wsdlLocation>
-                            <staleFile>${project.build.directory}/jaxws/stale/Servei.stale</staleFile>
+                            <wsdlLocation>http://localhost:8080/PersistenciaWs/PersistenciaWs?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/PersistenciaWs.stale</staleFile>
                         </configuration>
-                        <id>wsimport-generate-Servei</id>
+                        <id>wsimport-generate-PersistenciaWs</id>
                         <phase>generate-sources</phase>
                     </execution>
                 </executions>

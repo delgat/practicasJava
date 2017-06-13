@@ -5,28 +5,29 @@
  */
 package com.mycompany.formservlet;
 
+
+import com.mycompany.pruebapersistencia.ws.PersistenciaWs;
+import com.mycompany.pruebapersistencia.ws.PersistenciaWs_Service;
+import com.mycompany.pruebapersistencia.ws.Persona;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.ws.WebServiceRef;
-import ws.Persona;
-import ws.Servei;
-import ws.Servei_Service;
 
 /**
  *
  * @author jdcaparros
  */
-public class NewServlet extends HttpServlet {
+@WebServlet(name = "NewServlet1", urlPatterns = {"/NewServlet1"})
+public class NewServlet1 extends HttpServlet {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/prWeb/Servei.wsdl")
-    private Servei_Service service;
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/PersistenciaWs/PersistenciaWs.wsdl")
+    private PersistenciaWs_Service service;
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/prWeb/Servei.wsdl")
    
 
     /**
@@ -43,15 +44,14 @@ public class NewServlet extends HttpServlet {
         Persona result =null;
         
         try { // Call Web Service Operation
-            Servei port = service.getServeiPort();
-            // TODO initialize WS operation arguments here
-            java.lang.String arg0 = "";
+            PersistenciaWs port = service.getPersistenciaWsPort();
             // TODO process result here
-            result=port.crear(request.getParameter("nom"));
-           // out.println("Result = "+result);
+             result = port.crear(request.getParameter("nom"));
         } catch (Exception ex) {
             // TODO handle custom exceptions here
         }
+
+       
 
         
         
@@ -62,10 +62,10 @@ public class NewServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet NewServlet</title>");
+            out.println("<title>Servlet NewServlet1</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Persona '"+result.getNombre()+"' creada</h1>");
+            out.println("<h1>Servlet NewServlet1 at " + result.getNombre() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
