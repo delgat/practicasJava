@@ -5,14 +5,16 @@
  */
 package servlet;
 
+import dao.LoginDao;
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Login;
 
 /**
  *
@@ -29,13 +31,30 @@ public class formServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    @EJB
+    private LoginDao loginDao;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String pagina=request.getParameter("pagina");
+        String pagina = null;
         ServletContext sc = getServletContext();
-        RequestDispatcher rd = sc.getRequestDispatcher("/"+pagina+".html");
-        rd.forward(request, response);
-        
+        if (request.getParameter("pagina") == null) {
+            request.setAttribute("llista", loginDao.todas());
+            RequestDispatcher rd = sc.getRequestDispatcher("/llista.jsp");
+            rd.forward(request, response);
+
+        } else {
+            pagina = request.getParameter("pagina");
+            if(pagina.equals("primera")){
+                loginDao.missatge(new Login("anant a la primera pagina"));
+            }else{
+                loginDao.missatge(new Login("la pagina introduida no existeix"));
+            }
+            
+            RequestDispatcher rd = sc.getRequestDispatcher("/" + pagina + ".html");
+            rd.forward(request, response);
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
