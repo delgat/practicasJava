@@ -14,6 +14,5 @@ public class App {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("app.xml");
         System.out.println("Contexto cargado");
         System.out.println(ctx.getBean(Persona.class));
-        System.out.println(ctx.getBean(Persona.class));
     }
 }
