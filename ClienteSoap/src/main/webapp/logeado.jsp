@@ -19,27 +19,7 @@
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
         <script type="text/javascript">
-//            function ajaxPost() {
-//                $.ajax({
-//                    type: "POST",
-//                    url: "http://localhost:8090/nuevo",
-//                    data: JSON.stringify({
-//                        mensaje: $("#mensaje").val(),
-//                        usuarioId:${usuario.id}
-//                    }),
-//                    dataType: 'json',
-//                    contentType: "application/json",
-//                    success: function (data, textStatus, jqXHR) {
-//                        console.log(data);
-//                        const r = JSON.parse(data);
-//                        $("#hueco").html(r);
-//                    },
-//                    error: function (jqXHR, textStatus, errorThrown) {
-//                        console.log(jqXHR);
-//                        $("#hueco").html("Error: " + textStatus + " " + errorThrown);
-//                    }
-//                });
-//            }
+//            
             function ajaxPost() {
                 $.ajax({
                     type: "POST",
