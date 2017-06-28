@@ -1,0 +1,28 @@
+EJERCICIOS  ( SEGUNDA PARTE )
+--------------------------------
+
+
+4.- Obtener un listado de las mujeres de los departamentos que comiencen 
+    por D y E cuyo nivel de educación sea superior a la media; en este 
+    caso tambien ordenados por numero de personal.
+
+SELECT NOMBRE FROM TEMPLA WHERE (dept like 'D%' or dept like 'E%') AND (NIVEDUC>(SELECT AVG(NIVEDUC) FROM TEMPLA)) AND SEXO LIKE 'M' ORDER BY NUEMPL;
+
+5.- Seleccionar todos los empleados cuyo nombre sea igual al de algunas
+    personas del departamento D21 y cuyo código de trabajo sea diferente
+    de todos los del E21 (la lista debe contener el número de personal, 
+    nombre, apellido, departamento y código de trabajo).
+
+
+
+6.- Listar los empleados que no sean directores (la informacion que debe
+    aparecer es el número de personal, apellido y departamento).
+
+SELECT T.NUEMPL, T.APELLIDO, T.DEPT FROM TEMPLA T WHERE NUEMPL NOT IN (SELECT NUMDIREC FROM TDEPTA); 
+
+
+7.- Obtener un listado de todos los empleados que pertenecen al mismo
+    departamento que Tomas Soler.
+
+SELECT * FROM TEMPLA WHERE DEPT like (SELECT DEPT FROM TEMPLA WHERE nombre like 'TOMAS' and apellido like 'SOLER');
+

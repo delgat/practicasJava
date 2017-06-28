@@ -1,0 +1,14 @@
+EJERCICIOS  ( SEGUNDA PARTE )
+--------------------------------
+
+1.- Obtener un listado de todos los empleados (nombre y apellidos) que
+    ganan más de 200000 pts al mes y que entraron en la compañia después
+    del 1 de Enero de 1975. Tambien se quiere información correspondiente
+    a su código de trabajo.
+
+2.- Obtener el nombre, apellido y fecha de ingreso de los directores de
+    departamento ordenados por número de personal.
+
+3.- Seleccionar parejas de empleado (de sexo opuesto) que hayan nacido el 
+    mismo dia (con informaciñon acerca de apellidos y fecha de nacimiento).
+

@@ -1,0 +1,69 @@
+EJERCICIOS  DE FUNCIONES
+------------------------
+
+1.- Calcular el Valor Absoluto del número entero mayor o igual a la potencia de -17
+    de 1000000
+
+SELECT ABS(CEIL(POWER(1000000,-17))) FROM DUAL;
+
+2.- El salario bruto de un empleado es de 3000545. Por Navidad recibirá una paga
+    extraordinaria igual al producto de dividir su salario bruto entre 14 pagas.
+    Si tiene 12 pagas, ¿Cuanto cobrará por Navidad? (nómina + paga extra).
+    El resultado se redondeará a un sólo decimal.
+
+SELECT ROUND((3000545/12) + (3000545/14), 1) FROM DUAL;
+
+3.- Calcular la raiz cuadrada de 284857566. Se desea el resultado despreciando la parte
+    decimal.
+
+SELECT TRUNC(SQRT(284857566),0) FROM DUAL;
+
+
+4.- Utilizando la tabla TEMPLA, obtener el nombre y apellido de los empleados en 
+    minúsculas, excepto la primera letra del apellido que se mantendrá en mayúsculas.
+
+SELECT ROUND((3000545/12) + (3000545/14), 1) FROM DUAL;
+
+
+5.- El departamento es un campo alfanumérico compuesto de una letra y dos dígitos. Obtener
+    una lista con las distintas letras de los departamentos. Utilizar la tabla TEMPLA
+
+select distinct substr(dept,0,1) from templa;
+
+
+6.- Obtener el apellido y las dos primeras posiciones del nombre, en la tabla TEMPLA
+
+SELECT APELLIDO, SUBSTR(NOMBRE,0,2) FROM TEMPLA;
+
+
+7.- Utilicando la tabla TEMPLA, obtener el apellido y la inicial del nombre con el 
+    siguiente formato:
+
+	APELLIDO Y NOMBRE
+	-----------------
+
+	Gonzalez, L.
+	Perez, J.
+	    :
+	    :
+
+SELECT APELLIDO||', '||SUBSTR(NOMBRE,0,1)||'.' AS 'APELLIDO Y NOMBRE' FROM TEMPLA;
+
+
+8.- Calcular los días transcurridos de este año.
+
+SELECT SYSDATE - TO_DATE('01/01/2017', 'DD/MM/YYYY') FROM DUAL
+
+9.- Pasar a fecha juliana la fecha actual.
+
+SELECT TO_char(SYSDATE, 'j') from dual;
+
+
+10.- Averiguar los meses que has vivido (resultado entero)
+
+SELECT round(months_between(SYSDATE, '06/08/1995')) FROM DUAL;
+
+
+11.- Averiguar los días que has vivido.
+
+SELECT round(SYSDATE - TO_DATE('06/08/1995', 'DD/MM/YYYY')) FROM DUAL;

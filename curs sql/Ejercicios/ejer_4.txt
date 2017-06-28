@@ -1,0 +1,47 @@
+EJERCICIOS ( CUARTA PARTE )
+----------------------------
+
+1.- Crear una tabla de prueba llamada TEMPLAB y que sea exactamente igual a la tabla TEMPLA.
+
+2.- Para futuras referencias deje información en el sistema acerca de la tabla TEMPLAB (en 
+    forma de comentario) y de una de sus columnas (Número de empleado)
+
+3.- Cree la vista VTEMPLAB sobre su tabla, incluyendo todas las columnas.
+
+4.- Inserte los datos en su tabla seleccionándolos desde TEMPLA, lleve cuidado pues sólo nos
+    interesa almacenar los empleados que ganan más de 2000000. Si existen datos en la tabla 
+    TEMPLB borrarlos previamente.
+
+5.- Para referencia a la vista VTEMPLB ha estado usando el nombre anteriormente citado.
+    Haga las acciones oportunas para poder referenciarla como MIVISTA.
+
+6.- Para poder demostrar que puede utilizar todos los objetos que ha creado, obtenga el 
+    número de empleado, el apellido, el nombre, el código de departamento y el salario
+    de todos los empleados femeninos que pertenezcan a un departamento que empiece por
+    'D' y ganen mas de 250000 pts mensuales. La información debe ser ordenada por apellido
+    (Usando la tabla TEMPLB).
+
+7.- Redefina la consulta anterior y utilice la vista VTEMPLB.
+
+8.- De los empleados seleccionados en la consulta anterior, compruebe los que tienen un 
+    código de trabajo (CODTRA) mayor que 56.
+
+9.- Un posterior análisis de los datos necesarios para la aplicación, muestra que se requiere 
+    una columnna adicional, que contemple el número de hijos que tiene cada empleado, con las
+    siguientes características:
+
+	Nombre: HIJOS	Tipo: NUMBRE	Longitud: 2	NULOS: Si
+
+    Cambie la tabla TEMPLB para reflejar esta situación.
+
+    Preguntas añadidas:
+
+	- ¿Es obligatorio para una columna que se va a añadir a una tabla ya existente
+ 	   permitir nulos?
+
+	- ¿Dónde se añadirá la nueva columna ? (Principio, Final, en el lugar indicado)
+
+10.- Realice las actualizaciones necesarias a la tabla TEMPLB, para que se contemple que
+     los números de empleado 30, 100, 200 y 300 tienen respectivamente 0, 2, 1 y 3 hijos.
+
+    

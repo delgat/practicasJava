@@ -1,0 +1,69 @@
+EJERCICIOS  ( PRIMERA PARTE I )
+-------------------------------
+1.- Seleccionar todos los empleados cuyo salario esté comprendido entre
+    1500000 y 4000000.
+
+select nombre from templa where salar > 1500000 and salar < 4000000;
+select nombre from templa where salar between 1500 and 4000
+
+
+2.- Obtener un listado de todos los sueldos diferentes que hay en la 
+    compañia.
+
+select distinct salar from templa;
+
+
+3.- Obtener una lista con los empleados ordenada por departamento y
+    dentro de él por número de personal.
+
+select nombre from templa order by dept, nuempl;
+
+4.- Se pide una lista que recupere el salario de todos los empleados
+    cuyo código de trabajo empiece por 6.
+
+select nombre from templa where codtra like '6%';
+
+
+5.- Obtener el nombre, apellido y fecha de ingreso de los empleados
+    del departamento E11.
+
+
+select nombre, apellido, feching from templa where dept = 'E11';
+
+
+6.- Obtener una lista de todas las empleadas de los departamentos que
+    comiencen por 'D' y 'E'. La lista anterior debe contener información 
+    sobre el número de personal, nombre, apellido y número de teléfono.
+
+select NUEMPL, NOMBRE, APELLIDO, TLFN from templa where (dept LIKE 'D%' or dept LIKE 'E%') and SEXO like 'M';
+
+7.- Obtener una lista con el apellido, número de departamento y salario
+    mensual de los empleados de los departamentos A00, B01, C01 y D01.
+    La salida se quiere en orden descendente de salario dentro de cada 
+    departamento.
+
+select APELLIDO, DEPT, SALAR/12 from templa where dept in('A00', 'B01', 'C01', 'D01') ORDER BY dept, salar desc;
+
+
+8.- Seleccionar todos los empleado de los departamentos D11 y E11 cuyo
+    primer apellido empiece por S.
+
+select * from templa where (dept = 'E11' or dept = 'D11') and apellido like 's%';
+
+
+
+---
+
+SELECT * FROm emp where comm < 1000
+select * from emp order by sal*12
+select * from emp where deptno=&departamento and job='&trabajo'
+select nombre from templa where salar > 1500000 and salar < 4000000;
+select nombre from templa where salar between 1500 and 4000
+select distinct salar from templa;
+select nombre from templa order by dept, nuempl;
+select * from templa where dept = 'E11';
+select * from templa;
+select nombre from templa where codtra like '6%';
+select * from templa where (dept = 'E11' or dept = 'D11') and apellido like 'S%';
+select NUEMPL, NOMBRE, APELLIDO, TLFN from templa where (dept LIKE 'D%' or dept LIKE 'E%') and SEXO like 'M';
+select APELLIDO, DEPT, SALAR/12 from templa where dept in('A00', 'B01', 'C01', 'D01') ORDER BY dept, salar desc;
